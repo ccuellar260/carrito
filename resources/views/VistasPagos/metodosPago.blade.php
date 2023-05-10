@@ -3,7 +3,7 @@
 @section('Contenido')
         <div class="flex mt-28 mx-5 "> <!--  md:flex -->
              {{--Lado izquierdo, cuadro  direcciones de envio --}}
-            <div class="px-5 py-3 mb-10  w-7/12 border border-gray-200 rounded-lg bg-white  ">
+            <div class="px-5 py-3 mb-10  w-9/12 border border-gray-200 rounded-lg bg-white  ">
                 <div class="w-full mx-auto  font-light ">
                     <h6 class=" w-fit font-bold uppercase  border-b border-gray-600 ">Direccion de envio</h6>
                     {{-- //Direcciones --}}
@@ -113,9 +113,8 @@
                     </div>
             </div>  <!-- fin de cuadro -->
 
-
             {{-- Lado Derecho--}}
-            <div class="pl-5 w-5/12  fixed right-0 ">
+            <div class="pl-5 px-10  w-3/12  fixed right-0 ">
 
                   {{-- cuadro  direcciones de pago --}}
                <div class="border border-gray-200 rounded-lg shadow px-5 py-3 bg-white">
@@ -124,11 +123,18 @@
                 {{-- <div id="paypal-button-container"></div> --}}
                 <div>
                     {{-- disenio de stripe --}}
-                    <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light mb-6">
+                    <div class=" rounded-lg bg-white border border-gray-200 text-gray-800 font-light mb-6">
                         <div class="w-full p-3 border-b border-gray-200">
                             <div class="mb-5">
                                 <label for="type1" class="flex items-center cursor-pointer">
-                                    <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type" id="type1" checked>
+                                    <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="tarjeta" id="type1" checked>
+                                    <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" class="h-6 ml-3">
+                                </label>
+                            </div>
+
+                            <div class="mb-5">
+                                <label for="type1" class="flex items-center cursor-pointer">
+                                    <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="tarjeta" id="type1" >
                                     <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" class="h-6 ml-3">
                                 </label>
                             </div>
@@ -147,7 +153,7 @@
                                 </div>
                                 <div class="mb-3 -mx-2 flex items-end">
                                     <div class="px-2 w-1/4">
-                                        <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Fecha de vencimiento</label>
+                                        <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">F. venc.</label>
                                         <div>
                                             <select class="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                                                 <option value="01">01 - January</option>
@@ -180,7 +186,7 @@
                                         </select>
                                     </div>
                                     <div class="px-2 w-1/4">
-                                        <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Codigo de Seguridad(CVV)</label>
+                                        <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">(CVV)</label>
                                         <div>
                                             <input class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="text"/>
                                         </div>
@@ -203,7 +209,7 @@
 
 
                 <div class="border-b mt-3">
-                    <button class="bg-yellow-400 w-full p-2 text-lg rounded-lg mb-0.5">Pagar</button>
+                    {{-- <button class="bg-yellow-400 w-full p-2 text-lg rounded-lg mb-0.5">Pagar</button> --}}
                     <p class="text-sm text-center px-5 mb-2"> Al realizar este pedido, aceptas los terminos y condiciones de pollos Kiki</p>
                 </div>
 
