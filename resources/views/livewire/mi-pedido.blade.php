@@ -1,5 +1,5 @@
 
-<div class="bg-white flex-none fixed w-72 right-4  h-fit border rounded-lg shadow-md py-5 px-3 text-sky-950 ">
+<div class="bg-white flex-none fixed w-72 right-4 top-64 h-1/2 border overflow-y-auto rounded-lg shadow-md py-5 px-3 text-sky-950 ">
     <div class="flex justify-between">
         <p class="font-bold"> Mi pedido</p>
         @if ($carritos )
@@ -27,7 +27,7 @@
         @endforeach
 
         <div class="flex flex-row-reverse justify-between px-3 font-semibold mt-3 mb-5 ">
-            {{-- <p class=" border-b" wire:model='precio'> Sub-Total:  {{ $precio }} Bs</p> --}}
+            <p class=" border-b" wire:model='precio'> Sub-Total:  {{ $total}} Bs</p>
         </div>
 
 

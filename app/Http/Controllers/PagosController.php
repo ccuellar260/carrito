@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carrito;
+use App\Models\Direccion;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 
@@ -27,9 +28,10 @@ class PagosController extends Controller
             $carritos =  Cart::content();
             foreach ($carritos as $c) {
                 $subTotal =  $subTotal + $c->price;
-                // dd($c->options->imagen);
+                // dd($c->options);
             }
-            return view('VistasPagos.metodosPago',compact('carritos','subTotal'));
+            $direcciones = Direccion::where('id_user',$user->id)->get();
+            return view('VistasPagos.metodosPago',compact('carritos','subTotal','direcciones'));
         }else {
             return redirect()->route('Login');
         }

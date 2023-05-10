@@ -7,87 +7,70 @@
                 <div class="w-full mx-auto  font-light ">
                     <h6 class=" w-fit font-bold uppercase  border-b border-gray-600 ">Direccion de envio</h6>
                     {{-- //Direcciones --}}
-                    <div class=" bg-orange-50 border border-orange-300 rounded-lg mt-3 p-3 flex">
-                        <div class=" pr-2">
-                            <input type="radio" >
+                    {{-- @dd($direcciones) --}}
+
+
+
+                    @foreach ($direcciones as $dir )
+                        @if ($dir->predeterminado == 'si')
+                        <div class=" bg-orange-50 border border-orange-300 rounded-lg mt-3 p-3 flex">
+                            <div class=" pr-2">
+                                <input type="radio" name="direccion" checked >
+                            </div>
+                            <div>
+                                <p class="font-medium">
+                                    <span class="font-bold"> {{ $dir->nombre }} </span>
+                                    {{ $dir->direccion }}
+                                </p>
+                                <p class="text-sm font-medium"> Preguntar por Cristain al llegat al domicilio
+                                </p>
+                                <div class="text-sm text-teal-600 font-semibold space-x-1">
+                                    <a href="">Editar direccion</a> <span
+                                        class="text-black text-sm font-normal">|</span> <a href="">Agregar
+                                        instrucciones de entrega</a>
+                                </div>
+
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-medium">
-                                <span class="font-bold"> Nmbre Direccion </span>
-                                Calle valencia, #451, zona los lotes 78022150
-                            </p>
-                            <p class="text-sm font-medium"> Preguntar por Cristain al llegat al domicilio
-                            </p>
-                            <div class="text-sm text-teal-600 font-semibold space-x-1">
-                                <a href="">Editar direccion</a> <span
-                                    class="text-black text-sm font-normal">|</span> <a href="">Agregar
-                                    instrucciones de entrega</a>
+                        @else
+                        <div class=" border rounded-lg mt-3 p-3 flex">
+                            {{-- //forearch --}}
+                            <div class=" pr-2">
+                                <input type="radio" name="direccion">
+                            </div>
+                            <div>
+                                <p class="font-medium">
+                                    <span class="font-bold"> {{ $dir->nombre }} </span>
+                                    {{ $dir->direccion }}
+                                </p>
+                                <p class="text-sm font-medium"> Preguntar por Cristain al llegat al domicilio
+                                </p>
+                                <div class="text-sm text-teal-600 font-semibold space-x-1">
+                                    <a href="">Editar direccion</a> <span
+                                        class="text-black text-sm font-normal">|</span>
+                                        <a href="">Agregar
+                                        instrucciones de entrega</a>
+                                </div>
+
                             </div>
 
                         </div>
 
-                    </div>
+                        @endif
+                    @endforeach
 
-
-
-                    <div class=" border rounded-lg mt-3 p-3 flex">
-                        {{-- //forearch --}}
-                        <div class=" pr-2">
-                            <input type="radio">
-                        </div>
-                        <div>
-                            <p class="font-medium">
-                                <span class="font-bold"> Nmbre Direccion </span>
-                                Calle valencia, #451, zona los lotes 78022150
-                            </p>
-                            <p class="text-sm font-medium"> Preguntar por Cristain al llegat al domicilio
-                            </p>
-                            <div class="text-sm text-teal-600 font-semibold space-x-1">
-                                <a href="">Editar direccion</a> <span
-                                    class="text-black text-sm font-normal">|</span> <a href="">Agregar
-                                    instrucciones de entrega</a>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-
-                    <div class=" border rounded-lg mt-3 p-3 flex">
-                        {{-- //forearch --}}
-                        <div class=" pr-2">
-                            <input type="radio">
-                        </div>
-                        <div>
-                            <p class="font-medium">
-                                <span class="font-bold"> Nmbre Direccion </span>
-                                Calle valencia, #451, zona los lotes 78022150
-                            </p>
-                            <p class="text-sm font-medium"> Preguntar por Cristain al llegat al domicilio
-                            </p>
-                            <div class="text-sm text-teal-600 font-semibold space-x-1">
-                                <a href="">Editar direccion</a> <span
-                                    class="text-black text-sm font-normal">|</span> <a href="">Agregar
-                                    instrucciones de entrega</a>
-                            </div>
-
-                        </div>
-
-                    </div>
                 </div>
                     <button class="border-none text-teal-600  font-semibold mt-3 flex space-x-1 ">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-gray-600 w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                           </svg>
-                          <p>Agregar una nueva direccion</p>
+                          <a href="{{ route('Direccion.Create') }}"> Agregar una nueva direccion</a>
                     </button>
 
-                    <div class="border-b border-gray-300 mt-5 mb-4"></div>
+                    <div class="border-b border-gray-300 mt-5 mb-2"></div>
 
                     {{--lista  productos --}}
-                    <div class=" mt-7 px-5  bg-white ">
+                    <div class=" mt-10 px-5  bg-white ">
                         <div class="  font-light ">
                             <h6 class=" w-fit font-bold uppercase  border-b border-gray-600 ">Productos</h6>
                         </div>
@@ -96,24 +79,23 @@
                        <div class=" mt-3 pt-4 pb-2 px-3 border-b flex ">
                         <div class="w-32 h-28 ">
 
-                            <img src="{{ asset('img/Productos'.$c->options->imagen) }}" class="h-28 object-cover  rounded-sm">
+                            <img src="{{ asset('img/Productos/'.$c->options->imagen) }}" class="h-28 object-cover  rounded-sm">
                         </div>
                         <div class=" w-full px-2">
                             <p class=" font-semibold text-xl ">
                                 {{ $c->name }}  -  {{ $c->options->precio}} bs
                             </p>
-                            {{-- Extra_Presa,
-                $this->Cubiertos,
-                $this->Guarniciones, --}}
+                            {{-- @dd($carritos) --}}
                             <div class="grid grid-cols-2 pl-3">
-                                @if ($c->options->Extra_Presa)
-                                    <p class="border-b w-fit"> + {{ $c->options->Extra_Presa}}   9bs </p>
+                                {{-- @dd( $c->options->Extra_Presa) --}}
+                                @if ($c->options[0])
+                                    <p class="border-b w-fit"> + Presa Extra:  {{ $c->options[0]}} 5 Bs </p>
                                 @endif
-                                @if ($c->options->Cubiertos)
-                                <p class="border-b w-fit"> + {{ $c->options->Cubiertos}}  </p>
+                                @if ($c->options[1])
+                                <p class="border-b w-fit"> + Cubiertos {{ $c->options[1]}}  </p>
                                 @endif
-                                @if ($c->options->Guarniciones)
-                                <p class="border-b w-fit"> + {{ $c->options->Guarniciones}} </p>
+                                @if ($c->options[2])
+                                <p class="border-b w-fit"> + {{ $c->options[2]}} </p>
                                 @endif
                                 {{-- <p class="border-b w-fit"> + {{ $c->options->precio}}  </p> --}}
                             </div>
@@ -126,6 +108,9 @@
 
                         @endforeach
                     </div>
+                    <div class="flex flex-row-reverse justify-between">
+                        <p class="px-8 pt-3 tetx-2xl font-bold"> Total:  {{ $subTotal  }} Bs</p>
+                    </div>
             </div>  <!-- fin de cuadro -->
 
 
@@ -136,7 +121,84 @@
                <div class="border border-gray-200 rounded-lg shadow px-5 py-3 bg-white">
 
                 {{-- diseio de paypa --}}
-                <div id="paypal-button-container"></div>
+                {{-- <div id="paypal-button-container"></div> --}}
+                <div>
+                    {{-- disenio de stripe --}}
+                    <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light mb-6">
+                        <div class="w-full p-3 border-b border-gray-200">
+                            <div class="mb-5">
+                                <label for="type1" class="flex items-center cursor-pointer">
+                                    <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type" id="type1" checked>
+                                    <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" class="h-6 ml-3">
+                                </label>
+                            </div>
+                            <div>
+                                <div class="mb-3">
+                                    <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Nombre en la tarjeta</label>
+                                    <div>
+                                        <input class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="Cristan Cuellar" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Numero de tarjeta</label>
+                                    <div>
+                                        <input class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="0000 0000 0000 0000" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="mb-3 -mx-2 flex items-end">
+                                    <div class="px-2 w-1/4">
+                                        <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Fecha de vencimiento</label>
+                                        <div>
+                                            <select class="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                                                <option value="01">01 - January</option>
+                                                <option value="02">02 - February</option>
+                                                <option value="03">03 - March</option>
+                                                <option value="04">04 - April</option>
+                                                <option value="05">05 - May</option>
+                                                <option value="06">06 - June</option>
+                                                <option value="07">07 - July</option>
+                                                <option value="08">08 - August</option>
+                                                <option value="09">09 - September</option>
+                                                <option value="10">10 - October</option>
+                                                <option value="11">11 - November</option>
+                                                <option value="12">12 - December</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="px-2 w-1/4">
+                                        <select class="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                                            <option value="2020">2020</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2026">2026</option>
+                                            <option value="2027">2027</option>
+                                            <option value="2028">2028</option>
+                                            <option value="2029">2029</option>
+                                        </select>
+                                    </div>
+                                    <div class="px-2 w-1/4">
+                                        <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Codigo de Seguridad(CVV)</label>
+                                        <div>
+                                            <input class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="w-full p-3">
+                            <label for="type2" class="flex items-center cursor-pointer">
+                                <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type" id="type2">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" width="80" class="ml-3"/>
+                            </label>
+                        </div> --}}
+                    </div>
+                    <div>
+                        <button class="block w-full max-w-xs mx-auto bg-blue-600 hover:bg-blue-800 focus:bg-blue-800 text-white rounded-lg px-3 py-2 font-semibold"><i class="mdi mdi-lock-outline mr-1"></i> Realizar Pago</button>
+                    </div>
+                </div>
 
 
 
@@ -154,7 +216,7 @@
                         <p>Impuestos</p>
                     </div>
                     <div class="text-right">
-                        <p> 240.00 Bs</p>
+                        <p> {{ $subTotal  }} Bs</p>
                         <p class="border-b w-full pb-1"> 20.00 Bs </p>
                         <p> --</p>
                         <p> -- </p>
@@ -162,7 +224,7 @@
                 </div>
                 <div class="flex justify-between pt-3 pb-2">
                     <p class="text-red-700 font-bold text-xl"> Total del pedido:</p>
-                    <p> 280.00 Bs</p>
+                    <p class="font-semibold"> {{ $subTotal +20 }} Bs</p>
                 </div>
                </div>
             </div> <!-- din de cuadro -->
@@ -270,60 +332,6 @@
         </div> -->
 
 
-
-
-    <!-- Replace "test" with your own sandbox Business account app client ID -->
-    <script src="https://www.paypal.com/sdk/js?client-id={{ config('services.paypal.client_id') }}&currency=USD"></script>
-    <!-- Set up a container element for the button -->
-
-    <script>
-      paypal.Buttons({
-        // Order is created on the server and the order id is returned
-        createOrder() {
-          return fetch("/my-server/create-paypal-order", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            // use the "body" param to optionally pass additional order information
-            // like product skus and quantities
-            body: JSON.stringify({
-              cart: [
-                {
-                  sku: "YOUR_PRODUCT_STOCK_KEEPING_UNIT",
-                  quantity: "YOUR_PRODUCT_QUANTITY",
-                },
-              ],
-            }),
-          })
-          .then((response) => response.json())
-          .then((order) => order.id);
-        },
-        // Finalize the transaction on the server after payer approval
-        onApprove(data) {
-          return fetch("/my-server/capture-paypal-order", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              orderID: data.orderID
-            })
-          })
-          .then((response) => response.json())
-          .then((orderData) => {
-            // Successful capture! For dev/demo purposes:
-            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-            const transaction = orderData.purchase_units[0].payments.captures[0];
-            alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
-            // When ready to go live, remove the alert and show a success message within this page. For example:
-            // const element = document.getElementById('paypal-button-container');
-            // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-            // Or go to another URL:  window.location.href = 'thank_you.html';
-          });
-        }
-      }).render('#paypal-button-container');
-    </script>
 
 
 @endsection

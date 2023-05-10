@@ -1,5 +1,4 @@
 <div>
-
                 <div class="relative w-fit" id="div_direccines" >
                     <button type="button" id="bt_model_dir"
                         class="inline-flex px-5 items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"

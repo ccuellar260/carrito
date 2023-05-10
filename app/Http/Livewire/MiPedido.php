@@ -55,7 +55,11 @@ class MiPedido extends Component
     public function render(){
         $carritos = Cart::content();
         // dd( $carrito);
-        return view('livewire.mi-pedido',compact('carritos'));
+        $total=0;
+        foreach (Cart::content() as $cart) {
+            $total += $cart->price;
+          }
+        return view('livewire.mi-pedido',compact('carritos','total'));
     }
 
 }

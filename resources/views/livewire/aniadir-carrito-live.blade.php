@@ -46,11 +46,11 @@
                 @foreach ( $tipoSelect as  $t )
                     <div class="flex justify-between py-2 border-b border-gray-300 ">
                         <label for=""> {{  $t->nombre }}</label>
-                        <select name="{{  $t->nombre }}" id="">
+                        <select  id=""  wire:model.defer="{{ $t->nombre }}">
                             <option value="nulo">Opciones</option>
                             @foreach ( $opcSelect as $opc)
                                 @if ($opc->id_tipo_select == $t->id)
-                                 <option value="{{ $opc->id }}">{{ $opc->nombre }} </option>
+                                 <option value="{{ $opc->nombre}}">{{ $opc->nombre }} </option>
                                 @endif
                             @endforeach
                         </select>

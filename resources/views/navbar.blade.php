@@ -24,10 +24,10 @@
 
             </button>
 
-            <div>
+            <a href="{{ route('Producto.Index') }}">
                 <img class="h-8 mx-1" src="{{ asset('img/Productos/pollokiky.png') }}" alt="Logo">
+            </a>
 
-            </div>
         </div>
 
         <div class=" flex-1 ">

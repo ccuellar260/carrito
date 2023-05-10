@@ -22,17 +22,28 @@ class AniadirCarritoLive extends Component
     public $Extra_Presa = null;
     public $Cubiertos = null;
     public $Guarniciones = null;
+    public $Total = 0;
 
     public function aniadirCarrito()
     {
         // dd('este el prod: '.$this->ii.' y la cnat: '.$this->cantidad);
         $prod = Producto::where('id', $this->id_prod)->first();
+        // dd($this->Extra_Presa,$this->Cubiertos);
+        $precio= 0;
+       foreach (Cart::content() as $cart) {
+         if($cart->id == $this->id_prod){
+            $precio = $precio + $cart->price;
+         }
+       }
 
+
+        // dd($precio);
+        $precio = ($prod->precio * $this->Cantidad)+$precio;
         Cart::add([
             'id' => $prod->id,
             'name' => $prod->nombre,
             'qty' => $this->Cantidad,
-            'price' => $prod->precio,
+            'price' => $precio,
             'weight' => 550,
             'options' => [
                 $this->Extra_Presa,
