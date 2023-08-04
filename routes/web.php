@@ -6,6 +6,7 @@ use App\Http\Controllers\PedidosController;
 use App\Http\Controllers\PagosController;
 use App\Http\Controllers\ProductoController;
 use App\Models\Carrito;
+use App\Models\Pedido;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -79,3 +80,16 @@ Route::post('/Direcciones/create',[DireccionContrller::class, 'store'])->name('D
 
 Route::post('/Direcciones/predeterminado/{dir}',[DireccionContrller::class, 'cambiarPredeterminado'])->name('Direccion.Predeterminado');
 
+
+Route::get('/cambiarEstado',function(){
+    dd('llegue xd xd');
+    $pedidos = Pedido::get();
+    return view('VistaConductor.pedidos',compact('pedidos'));
+ })->name('cambiarEstado');
+
+
+Route::get('/Conductor/pedidos',function(){
+    // dd('llegue xd xd');
+    $pedidos = Pedido::get();
+    return view('VistaConductor.pedidos',compact('pedidos'));
+ });
