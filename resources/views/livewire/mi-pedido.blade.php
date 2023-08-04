@@ -1,5 +1,5 @@
 
-<div class="bg-white flex-none fixed w-72 right-4 top-64 h-1/2 border overflow-y-auto rounded-lg shadow-md py-5 px-3 text-sky-950 ">
+<div id="div_pedidos" class="bg-white flex-none fixed  w-72 right-4 top-20  border overflow-y-auto rounded-lg shadow-md py-5 px-3 text-sky-950 ">
     <div class="flex justify-between">
         <p class="font-bold"> Mi pedido</p>
         @if ($carritos )
@@ -15,7 +15,7 @@
         <p>Precio </p>
         <p>Accion </p>
     </div>
-    @if ($carritos )
+    @if (count($carritos) != 0 )
         {{-- @dd('hay carritos') --}}
         @foreach ($carritos as $cc)
         <div class="flex justify-between border rounded-lg  p-2 mb-2 shadow-md">

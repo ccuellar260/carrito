@@ -9,6 +9,7 @@ use Illuminate\Support\Str; //para usar en el numero randon
 use App\Models\User; //modelo user
 use App\Models\Producto;
 use App\Models\Categoria;
+use App\Models\Direccion;
 use App\Models\ProductoCaja;
 use App\Models\ProductoSelect;
 use App\Models\SelectOpcion;
@@ -40,6 +41,7 @@ class DatabaseSeeder extends Seeder
         $user->apellido = 'Cuellar';
         $user->password =  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'; // password
         $user->remember_token =  Str::random(10); //numero randon de 10 dig
+        $user->createAsStripeCustomer();
         $user->save();
         // $user->createAsStripeCustomer();
 
@@ -247,7 +249,19 @@ class DatabaseSeeder extends Seeder
         };
 
 
+        //crear metodos de pago
 
+
+
+        
+        //crear direcciones
+        Direccion::create([
+            'nombre' => 'Calle Valencia',
+            'direccion' => 'Calle Valencia #451',
+            'id_user' => 1,
+            'predeterminado' => 'si',
+            'entrega' => 'tocar el timbre cuando llegue',  
+        ]);
 
     }
 }

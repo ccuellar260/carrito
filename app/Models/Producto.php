@@ -21,6 +21,11 @@ class Producto extends Model
         return $this->hasMany(Carrito::class);
     }
 
+    public function detalles(){
+        //dar mi primari keya productos
+        return $this->hasMany(DetallePedido::class,'id_producto');
+    }
+
     public function producto_select(){
         //dar mi primari keya productos
         return $this->hasMany(ProductoSelect::class);

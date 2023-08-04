@@ -25,3 +25,36 @@
     }
 }
 /* fin de los disenios de lso modals */
+
+
+/* sobreponer z-30xd */
+.z-50xd {
+    z-index: 50;
+}
+
+/*colores */
+.estado-gray-200-xd {
+    @apply bg-gray-200;
+}
+
+.estado-green-200-xd {
+    @apply bg-green-200;
+}
+
+.text-green-600-xd {
+    @apply text-green-600;
+}
+
+.text-gray-600-xd {
+    @apply text-gray-600;
+}
+
+
+.after-border-gray-200-xd{
+    @apply after:border-gray-200
+}
+
+.after-border-green-200-xd{
+    @apply after:border-green-200
+}
+

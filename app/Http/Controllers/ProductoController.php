@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Producto;
 use App\Models\Carrito;
+use App\Models\Pedido;
 use App\Models\ProductoSelect;
 use App\Models\TipoSelect;
 use Illuminate\Http\Request;
@@ -25,9 +26,10 @@ class ProductoController extends Controller
         // $user = Auth()->user();
         $productos = Producto::get();
         $categorias = Categoria::get();
+        $pedidos = Pedido::get();
 
                 // dd($carritos);
-        return view('VistasProducto.index', compact('productos','categorias'));
+        return view('VistasProducto.index', compact('productos','categorias','pedidos'));
     }
 
     public function indexAdmin (){
@@ -45,7 +47,6 @@ class ProductoController extends Controller
     public function create()
     {
         // dd('llege');
-
         $categorias = Categoria::get();
         return view('VistasProducto.create',compact('categorias'));
     }

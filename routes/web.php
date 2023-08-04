@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/prueba',function(){
     // dd('llegue xd xd');
     $carrito = Carrito::get();
@@ -68,6 +69,7 @@ Route::post('/Productos/create',[ProductoController::class, 'store'])->name('Pro
 
 Route::get('/Pedidos',[PagosController::class, 'pedidos'])->name('Pedidos');
 Route::get('/Pedidos/{pedido}',[PagosController::class, 'pedidosShow'])->name('Pedidos.Show');
+Route::post('/Pedidos/store',[PedidosController::class, 'realizar_pedido'])->name('Pedidos.store');
 
 
 //direcciones

@@ -10,9 +10,11 @@ class Direccion extends Model
     use HasFactory;
     public $timestamps = false;
 
-    //relacines de uno a muchos con productos
     public function user(){
-        //dar mi primari keya productos
         return $this->belongsTo(User::class);
+    }
+
+    public function pedido(){
+        return $this->hasMany(Pedido::class,'id_direccion');
     }
 }

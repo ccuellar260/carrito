@@ -52,13 +52,24 @@
                             <span>Punto de entrega</span> </button>
                     </div>
 
-
-                    <div class=" ">
-                        <input type="radio" value="si" name="preferido">
-                        <span class="text-sm " for="">Marcar como direccoin preferida</span>
-                        <input type="hidden" value="no" name="preferido" checked class="">
+                   
+                    <div class="">
+                        <label class="text-sm " >
+                            Marcar como direccoin preferida
+                        </label>
+                     <div class="flex b justify-around">
+                        <div>
+                            <input  type="radio" value="si" name="preferido">
+                            <label for="">si</label>
+                         </div>
+                            <div>                      
+                                <input  type="radio" checked value="no" name="preferido">
+                                <label for="">no</label>
+                            </div>
+                     </div>
+                    
                     </div>
-
+                    
                     <div>
                         <label for="nota" class="block text-sm font-medium leading-6 text-gray-900">
                             Introduccoin de entrega(opcional)
@@ -77,4 +88,7 @@
 
         </div>
     </div>
+    
 @endsection
+
+

@@ -94,8 +94,6 @@ class LoginController extends Controller
     public function registroStore(Request $r)
     {
 
-
-
         if (User::where('name', $r->usuario)->first()) {
 
             throw ValidationException::withMessages([
@@ -118,6 +116,7 @@ class LoginController extends Controller
         $u->apellido = $r->apellido;
         $u->email = $r->correo;
         $u->password = Hash::make($r->contra);
+        $u->createAsStripeCustomer();
         $u->save();
 
         //registrar un nuevo cliente en stripe
@@ -141,10 +140,10 @@ class LoginController extends Controller
         $u->name = $r->usuario;
         $u->email = $r->correo;
         $u->password = Hash::make($r->contra);
+        $u->createAsStripeCustomer();
         $u->save();
 
-        //registrar un nuevo cliente en stripe
-        // $u->createAsStripeCustomer();
+   
 
         return redirect()->route('Login');
     }

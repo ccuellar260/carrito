@@ -25,17 +25,19 @@ class DireccionContrller extends Controller
     public function store(Request $r)
     {
 // dd($r);
+
         $p = new Direccion();
         $p->nombre = $r->nombre;
         $p->numero = $r->numero;
         $p->direccion = $r->direccion;
         $p->sub_direccion = $r->sub_direccion;
-        $p->predeterminado =$r->preferido ;
+        $p->predeterminado =$r->preferido;
         $p->entrega = $r->nota;
         // $p->atitud =$r-> ;
         // $p->longitud = $r->;
         $p->id_user = auth()->user()->id;
         $p->save();
+        $this->cambiarPredeterminado($p);
         // dd($r);
         return redirect()->route('Direccion.Index');
     }

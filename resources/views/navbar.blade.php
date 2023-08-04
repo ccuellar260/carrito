@@ -81,10 +81,10 @@
         </div>
 
 
-        <div class="flex justify-center items-center">
-            <div class="flex mx-3 space-x-1">
+        <div class="flex justify-center items-center ">
+            <div class="flex mx-3 space-x-1  p-1 h-full ">
                 @auth
-                    <div class="relative " id="div_model_perfil">
+                    <div class="relative   h-full flex justify-center" id="div_model_perfil">
                         <button type="button" id="bt_model"
                             class="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
                             aria-expanded="false">
@@ -101,7 +101,7 @@
                         </button>
 
                         {{-- //model xd --}}
-                        <div id="model_perfil" class="absolute hidden -right-3  z-10  mt-1 flex w-40 ">
+                        <div id="model_perfil" class="absolute hidden -right-3  z-10  mt-10 flex w-40 ">
                             <div
                                 class=" bg-green-300  flex-auto overflow-hidden rounded-3xl  text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
                                 <div class="grid divide-x divide-gray-900/5 bg-gray-50">
