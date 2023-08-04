@@ -21,17 +21,21 @@
                         <p> estado:  {{ $pedido->estado}}</p>
                     </div>
                     <div class="bg-red-200 flex space-x-4">
-                        @for ( $i = 0; $i < $estados; $i++)
-
+                        
+                        @for ( $i = 0; count($estados); $i++)
                         <form action="{{route('cambiarEstado')}}">
                             @csrf
-                            <input type="hidden" name="id_estado" value="">
-                            <button type="submit" class="py-1 px-2 rounded-lg bg-green-400">
-                               {{$estados[$i]}}
-                            </button>
+                            <input type="hidden" name="id_estado" value="{{ $estados[0] }}">
+                            <button type="submit" class="py-1 px-2 rounded-lg
+                            {{ $pedido->estado <= 0 : 'bg-green-300' ? 'bg-gray-300' }}"
+                            >
+                                {{ $estados[0] }}
+                             </button>
                         </form>
-
                         @endfor
+                       
+
+                        
 
 
 

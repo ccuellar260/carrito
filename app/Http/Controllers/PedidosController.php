@@ -41,7 +41,10 @@ class PedidosController extends Controller
         if ($r->es_nueva == 'true'){
             $user->addPaymentMethod($r->tarjeta);
         }
-        // dd('cliente registrado');
+        //raliazr el pago 
+        
+
+
 
         //guardar pedido
         $pedido = new Pedido();
