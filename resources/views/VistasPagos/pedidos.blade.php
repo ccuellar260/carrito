@@ -14,6 +14,10 @@
 
 <body>
     <div class="h-14 border-b border-gray-300 flex items-center">
+        <a href="{{ route('Producto.Index') }}"
+        class="px-5 ">
+        ir a home
+    </a>
         <p class="w-full text-center "> Mis pedidos</p>
     </div>
 

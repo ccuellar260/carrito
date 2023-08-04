@@ -22,6 +22,7 @@
 
                             <p class="font-semibold"> Nombre del producto</p>
                             <p> {{ $pedido->monto_total }}  Bs. {{ count($pedido->detalles) }} productos </p>
+                            
                         </div>
                     </button>
 
@@ -55,13 +56,26 @@
             {{-- <a href="{{ route('Pedidos.Show', 1) }}"> Ir a detalle </a> --}}
 
         </div>
+        
+        @php
+        $estados = ['En proceso', 'En camino', 'En Destino', 'Entregado'];
+      @endphp
+      
 
         <div class="w-7/12 bg-gray-100 mt-6 rounded-lg mr-5 border border-gray-200">
             <p class="py-2 text-center font-semibold">
                 Detalles del pedido {{ $pedido_id }}
+                estado: {{ $estados[$estado_actual] }}
             </p>
 
-            <div class="h-20 bg-red-200">
+            <div class="h-20  flex space-x-4 p-3">
+                @for ( $i=0; $i < count($estados); $i++)
+                    <button type="button" class="py-1 px-2 rounded-lg w-full
+                    {{ $estado_actual >= $i ? 'bg-green-300' : 'bg-gray-300' }}"
+                    >
+                    {{ $estados[$i] }}
+                    </button>
+                @endfor
 
             </div>
             

@@ -128,9 +128,10 @@
 
                             {{-- //hacer un foreach de la lista de tarjetas que hay  --}}
                             @foreach ($metodos_pago as $metodo )
+                            {{-- @dd($metodo->id ) --}}
                                 <div class="mb-2 mx-3 ">
                                     <label for="tarjeta_1" class="flex space-x-3 items-center cursor-pointer  h-10">
-                                        <input type="radio"  name="tarjeta" value="{{ $metodo->card->last4 }}" id="tarjeta_1"  checked
+                                        <input type="radio"  name="tarjeta" value="{{ $metodo->id }}" id="tarjeta_1"  checked
                                         class="form-radio h-5 w-5 text-indigo-500">
                                        
                                        <div class="flex flex-col leading-none pr-4">

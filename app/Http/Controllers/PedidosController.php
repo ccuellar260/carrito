@@ -39,11 +39,9 @@ class PedidosController extends Controller
         //guardar tarjeta
         $user = auth()->user();
         if ($r->es_nueva == 'true'){
-            $user->addPaymentMethod($r->tarjeta);
+            // $user->addPaymentMethod($r->tarjeta);
         }
         //raliazr el pago 
-        
-
 
 
         //guardar pedido
@@ -65,15 +63,32 @@ class PedidosController extends Controller
             //hacer descuento
             $detalle->save();
 
-            $subTotal =  $subTotal + $c->price;
+            $subTotal += ($c->price * $c->qty);
         }
         $pedido->monto_total = $subTotal;
         $pedido->save();   
+
+        // dd($pedido->monto_total +20);
+        //realizar pago
+        $user->charge(($pedido->monto_total + 20)*100, $r->tarjeta);
 
         //limpiar carrito
         Cart::destroy();
         return redirect()->route('Producto.Index');
     }
+
+    public function cambiarEstado(Request $request)
+    {
+        // dd($request->all());
+        $pedido = Pedido::find($request->pedido);
+
+        $pedido->estado = $request->estado;
+        $pedido->save();
+
+        return redirect()->route('Producto.Index');
+    }
+    
+
 
  
 }

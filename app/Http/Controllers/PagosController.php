@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 
-
 class PagosController extends Controller
 {
     public function index(){
@@ -34,6 +33,7 @@ class PagosController extends Controller
             $direcciones = Direccion::where('id_user',$user->id)->get();
             $intent = $user->createSetupIntent();
             $metodos_pago = $user->paymentMethods();
+            // dd($metodos_pago);
             return view('VistasPagos.metodosPago',compact('carritos','subTotal','direcciones','intent','metodos_pago'));
         }else {
             return redirect()->route('Login');

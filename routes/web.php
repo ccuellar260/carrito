@@ -71,6 +71,9 @@ Route::post('/Productos/create',[ProductoController::class, 'store'])->name('Pro
 Route::get('/Pedidos',[PagosController::class, 'pedidos'])->name('Pedidos');
 Route::get('/Pedidos/{pedido}',[PagosController::class, 'pedidosShow'])->name('Pedidos.Show');
 Route::post('/Pedidos/store',[PedidosController::class, 'realizar_pedido'])->name('Pedidos.store');
+Route::post('/cambiarEstado',[PedidosController::class, 'cambiarEstado'])->name('cambiarEstado');
+
+
 
 
 //direcciones
@@ -79,13 +82,6 @@ Route::get('/Direcciones/create',[DireccionContrller::class, 'create'])->name('D
 Route::post('/Direcciones/create',[DireccionContrller::class, 'store'])->name('Direccion.Store');
 
 Route::post('/Direcciones/predeterminado/{dir}',[DireccionContrller::class, 'cambiarPredeterminado'])->name('Direccion.Predeterminado');
-
-
-Route::get('/cambiarEstado',function(){
-    dd('llegue xd xd');
-    $pedidos = Pedido::get();
-    return view('VistaConductor.pedidos',compact('pedidos'));
- })->name('cambiarEstado');
 
 
 Route::get('/Conductor/pedidos',function(){
