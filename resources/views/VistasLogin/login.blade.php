@@ -18,7 +18,7 @@
       <h2 class="mt-4 text-center text-2xl font-extrabold leading-9 tracking-tight text-gray-900">Pollos Kiki</h2>
     </div>
 
-    <div class="mt-4 mx-auto w-8/12 sm:w-8/12 lg:w-3/12  px-8 pb-8 shadow bg-white rounded-lg ">
+    <div class="mt-4 mx-auto   px-8 pb-8 shadow bg-white rounded-lg ">
       <form class="space-y-6" action="{{ Route('Login.Store')}} " method="POST">
         @csrf <!--obtener token -->
         <div class="">
@@ -42,8 +42,8 @@
             </div>
           </div>
           <div class="mt-2">
-            <input id="contra" name="contra" type="password" autocomplete="current-password" required class="block w-full px-2
-             rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2
+            <input id="contra" name="contra" type="password" autocomplete="current-password" required value="{{ old('contra','password') }}" 
+            class="block w-full px-2  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2
              focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
             @error('contra')

@@ -15,14 +15,14 @@
 
     <div class=" bg-white  shadow-lg h-14 flex justify-between fixed top-0 w-full">
         <div class=" flex m-2">
-            <button class="border-2 rounded-lg p-0.5 mx-1">
+            {{-- <button class="border-2 rounded-lg p-0.5 mx-1">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
 
-            </button>
+            </button> --}}
 
             <a href="{{ route('Producto.Index') }}">
                 <img class="h-8 mx-1" src="{{ asset('img/Productos/pollokiky.png') }}" alt="Logo">
