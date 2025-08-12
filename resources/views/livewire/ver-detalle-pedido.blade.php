@@ -65,13 +65,13 @@
         <div class="w-7/12 bg-gray-100 mt-6 rounded-lg mr-5 border border-gray-200">
             <p class="py-2 text-center font-semibold">
                 Detalles del pedido {{ $pedido_id }}
-                estado: {{ $estados[$estado_actual] }}
+                {{-- estado: {{ $estados[$estado_actual] }} --}}
             </p>
 
             <div class="h-20  flex space-x-4 p-3">
                 @for ( $i=0; $i < count($estados); $i++)
                     <button type="button" class="py-1 px-2 rounded-lg w-full
-                    {{ $estado_actual >= $i ? 'bg-green-300' : 'bg-gray-300' }}"
+                    {{-- {{ $estado_actual >= $i ? 'bg-green-300' : 'bg-gray-300' }}" --}}
                     >
                     {{ $estados[$i] }}
                     </button>
@@ -111,7 +111,7 @@
                 </table>
                 <div class="flex justify-end mt-4">
                     <span> 
-                        Total: {{ $detalle->pedido->monto_total }} Bs.
+                        {{-- Total: {{ $detalle->pedido->monto_total }} Bs. --}}
                     </span>
                 </div>
               

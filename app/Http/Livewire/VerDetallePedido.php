@@ -23,14 +23,20 @@ class VerDetallePedido extends Component
 
     public function render()
     {
+        // dd($this->pedido_id);
         $user = auth()->user();
-        $pedidos = Pedido::where('id_cliente',$user->id)->get();
+        $pedidos = Pedido::where('id_cliente', $user->id)->get();
 
-        if(is_null($this->pedido_id)){
-            $this->pedido_id = $pedidos[0]->id;
-            $this->estado_actual = $pedidos[0]->estado;
+        if (is_null($this->pedido_id)) {
+
+            if (count($pedidos) > 0) {
+                $this->pedido_id = $pedidos[0]->id;
+                $this->estado_actual = $pedidos[0]->estado;
+            } else {
+                $this->pedido_id = 0;
+            }
         }
-        $detalles = DetallePedido::where('id_pedido',$this->pedido_id)->get();
-        return view('livewire.ver-detalle-pedido',compact('pedidos', 'detalles'));
+        $detalles = DetallePedido::where('id_pedido', $this->pedido_id)->get();
+        return view('livewire.ver-detalle-pedido', compact('pedidos', 'detalles'));
     }
 }
