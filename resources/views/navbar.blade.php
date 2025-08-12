@@ -72,7 +72,7 @@
         <div class="flex justify-center items-center mx-2 space-x-5">
             @auth
             
-            <a href="{{ route('Direccion.Index')}}"
+            <a href="{{ route('Producto.indexAdmin')}}"
                 class=" flex items-center  gap-x-2 p-2 pl-3 font-semibold text-gray-900 hover:bg-gray-100">
                 
                 <span class="ml-1"> Admin Productos </span>
