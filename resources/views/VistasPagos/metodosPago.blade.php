@@ -181,7 +181,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Numero de tarjeta</label>
-                                    <div id="card-element" class="w-full px-3 py-2 mb-1 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors">
+                                    <div id="card-element" class="w-full px-3 py-2 mb-1 bg-white  border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors">
                                         <input class="w-full" type="text"/>
                                     </div>
                                     <span id="error_tarjeta" class="text-red-500 font-medium">  </span>
@@ -258,35 +258,36 @@
 
 <script src="https://js.stripe.com/v3/"></script>
 <script>
-    console.log('hola');
-    var miVariable = {!! json_encode($miVariable) !!};
-    console.log(miVariable);
+    // console.log('hola');
+    // var miVariable = {!! json_encode($miVariable) !!};
+    // console.log(miVariable);
     var div_nueva_tarjeta = document.getElementById('div_nueva_tarjeta');
-    console.log(div_nueva_tarjeta);
     var tarjeta_nueva = document.getElementById('tarjeta_nueva');
     tarjeta_nueva.addEventListener('change', function() {
+        console.log('evento change en tarjeta_nueva');
+        
         if (this.checked) {
             console.log('abrir modal de create tarjeta'); 
             div_nueva_tarjeta.classList.remove('hidden');
+        }else{
+            console.log('cerrar modal de create tarjeta');
         }
     });
 
     var tarjeta_1 = document.getElementById('tarjeta_1');
-    tarjeta_1.addEventListener('change', function() {
-        if (this.checked) {
-            console.log('cerrar modal de tarjta create');
-            div_nueva_tarjeta.classList.add('hidden');  
-        }
-    });
-
+    if (tarjeta_1) {
+        tarjeta_1.addEventListener('change', function() {
+            if (this.checked) {
+                console.log('cerrar modal de tarjta create');
+                div_nueva_tarjeta.classList.add('hidden');  
+            }
+        });
+    }
   
         const stripe = Stripe("{{ env('STRIPE_KEY') }}");
-    
         const elements = stripe.elements();
         const cardElement = elements.create('card');
-    
         cardElement.mount('#card-element');
-   
    
 </script>
 
@@ -294,10 +295,9 @@
     const cardHolderName = document.getElementById('card-holder-name');
     const cardButton = document.getElementById('card-button');
     const clientSecret = cardButton.dataset.secret;
-    const loading = document.getElementById('loading');
     
+    const loading = document.getElementById('loading');
     cardButton.addEventListener('click', async (e) => {
-
 
         //verificar si es nueva tarjeta
         if (tarjeta_nueva.checked){
