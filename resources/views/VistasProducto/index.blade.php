@@ -50,7 +50,7 @@
             <div class="flex justify-between">
                 <p class="mb-2 font-semibold"> Pedido #{{ $pedido->id }} ({{ $pedido->detalles[0]->producto->nombre }}...)  </p>
                 <p class="mb-2 font-semibold"> estado:{{ $estado[ $pedido->estado] }}</p>
-                <p class="mb-2 font-semibold"> monto total: 110 bs</p>
+                <p class="mb-2 font-semibold"> monto total: {{ $pedido->monto_total + 20 }} bs</p>
 
             </div>
             <ol class="flex items-center w-full">
